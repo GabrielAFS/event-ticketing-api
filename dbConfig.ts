@@ -7,4 +7,6 @@ export const mysqlConfig: MysqlConnectionOptions = {
   username: 'root',
   password: 'gRa467@01',
   database: 'event_ticketing',
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  synchronize: true, // Don't use it on production!
 };
