@@ -9,6 +9,7 @@ import dbConfig from './config/db.config';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      expandVariables: true,
       load: [dbConfig],
     }),
     TypeOrmModule.forRootAsync({
