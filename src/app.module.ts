@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import dbConfig from './config/db.config';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { EventModule } from './event/event.module';
 
 @Module({
   imports: [
@@ -15,6 +18,13 @@ import dbConfig from './config/db.config';
     TypeOrmModule.forRootAsync({
       useFactory: dbConfig,
     }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+      debug: true,
+      playground: true,
+    }),
+    EventModule,
   ],
   controllers: [AppController],
   providers: [AppService],
