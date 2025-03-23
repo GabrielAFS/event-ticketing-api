@@ -1,5 +1,6 @@
 import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Order } from './order.entity';
 
 @ObjectType()
 @Entity()
@@ -27,4 +28,8 @@ export class Event {
   @Field(() => Float)
   @Column({ default: 0 })
   price: number;
+
+  @Field(() => [Order])
+  @OneToMany(() => Order, (order) => order.event)
+  orders: Promise<Order[]>;
 }
