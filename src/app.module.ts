@@ -7,6 +7,7 @@ import dbConfig from './config/db.config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { EventModule } from './event/event.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { EventModule } from './event/event.module';
       playground: true,
     }),
     EventModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
