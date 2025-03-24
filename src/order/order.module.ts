@@ -1,11 +1,17 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Order } from 'src/entities/order.entity';
 import { OrderResolver } from './order.resolver';
 import { OrderService } from './order.service';
+import { DatabaseModule } from 'src/database/database.module';
+import { orderProviders } from './order.providers';
+import { eventProviders } from 'src/event/event.providers';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Order])],
-  providers: [OrderResolver, OrderService],
+  imports: [DatabaseModule],
+  providers: [
+    ...orderProviders,
+    ...eventProviders,
+    OrderResolver,
+    OrderService,
+  ],
 })
 export class OrderModule {}

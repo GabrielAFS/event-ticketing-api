@@ -31,7 +31,7 @@ type Query {
 
 type Mutation {
   createEvent(createEventInput: CreateEventInput!): Event!
-  createOrder(eventId: Int!, createOrderInput: CreateOrderInput!): Order!
+  createOrder(createOrderInput: CreateOrderInput!): Order!
 }
 
 input CreateEventInput {
@@ -43,5 +43,6 @@ input CreateEventInput {
 }
 
 input CreateOrderInput {
+  eventId: Int!
   numberOfTickets: Int!
 }
