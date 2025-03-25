@@ -1,4 +1,4 @@
-import { Event } from '../entities/event.entity';
+import { Event } from '../../entities/event.entity';
 import { DataSource } from 'typeorm';
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
 
@@ -10,6 +10,6 @@ export class MainSeeder implements Seeder {
     const eventFactory = factoryManager.get(Event);
 
     console.log('seeding events...');
-    await eventFactory.saveMany(100);
+    await eventFactory.saveMany(10);
   }
 }

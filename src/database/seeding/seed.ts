@@ -1,11 +1,12 @@
-import dbConfig from '../config/db.config';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { runSeeders, SeederOptions } from 'typeorm-extension';
-import { EventFactory } from './event.factory';
+
 import { MainSeeder } from './main.seeder';
+import { EventFactory } from './factories/event.factory';
+import { dataSourceOptions } from '../database.config';
 
 const options: DataSourceOptions & SeederOptions = {
-  ...dbConfig(),
+  ...dataSourceOptions,
   factories: [EventFactory],
   seeds: [MainSeeder],
 };
