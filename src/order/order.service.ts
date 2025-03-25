@@ -21,11 +21,11 @@ export class OrderService {
   async create(createOrderInput: CreateOrderInput) {
     const { eventId, numberOfTickets } = createOrderInput;
 
-    const code = randomUUID();
     const event = await this.eventRepo.findOne({ where: { id: eventId } });
 
-    if (!event) throw new Error('Event not found.');
+    await this.validate(numberOfTickets, event);
 
+    const code = randomUUID();
     const newOrder = this.orderRepo.create({
       numberOfTickets,
       code,
@@ -38,5 +38,13 @@ export class OrderService {
     await this.eventRepo.save(event);
 
     return savedOrder;
+  }
+
+  private async validate(ticketsToBePurchased: number, eventInstance: Event) {
+    if (!eventInstance) throw new Error('Event not found.');
+
+    if (eventInstance.numberOfTickets < ticketsToBePurchased) {
+      throw new Error('Unavailable number of tickets');
+    }
   }
 }
