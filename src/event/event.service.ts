@@ -10,7 +10,13 @@ export class EventService {
   ) {}
 
   async findAll(): Promise<Event[]> {
-    return await this.eventRepo.find();
+    return await this.eventRepo.find({
+      order: {
+        numberOfTickets: {
+          direction: 'DESC',
+        },
+      },
+    });
   }
 
   async findOne(id: number) {
