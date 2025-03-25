@@ -45,6 +45,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+PS.: Before you run the commands, make sure you have a `.env` file on the project root.
+
 ## Test
 
 ```bash
@@ -56,6 +58,12 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+## Seeding database
+
+```bash
+$ npm run seed
 ```
 
 ## Support
