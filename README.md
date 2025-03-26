@@ -32,6 +32,14 @@
 $ npm install
 ```
 
+### Creating database
+
+Make sure you have [MySQL](https://dev.mysql.com/downloads/mysql/) on your machine, then you can run the following command to create the database:
+```bash
+/path/to/mysql/bin/mysql -h 127.0.0.1 -P 3306 -u <your_db_username> -p'<your_db_password>' --default-character-set=utf8 <'/path/to/event_ticketing_2025-03-26_163329.sql'
+```
+or import the `.sql` from [MySQL Workbench](https://www.mysql.com/products/workbench/) or using the VSCode extension [Database Client](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-database-client2).
+
 ## Running the app
 
 ```bash
@@ -45,7 +53,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-PS.: Before you run the commands, make sure you have a `.env` file on the project root.
+PS.: Before running the commands, ensure you have a `.env` file on the project root following the `.env.example` file.
 
 ## Test
 
